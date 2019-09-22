@@ -24,7 +24,11 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-    { }
+    {
+        Book::create($request->all());
+
+        return response()->json(['新增書籍成功'], 200);
+    }
 
     /**
      * Display the specified resource.
@@ -33,7 +37,9 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show($id)
-    { }
+    {
+        return Book::find($id);
+    }
 
     /**
      * Update the specified resource in storage.
@@ -43,7 +49,11 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
-    { }
+    {
+        Book::find($id)->update($request->all());
+
+        return response()->json(['編輯書籍成功'], 200);
+    }
 
     /**
      * Remove the specified resource from storage.
@@ -52,5 +62,9 @@ class BookController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
-    { }
+    {
+        Book::find($id)->delete();
+
+        return response()->json(['刪除書籍成功'], 200);
+    }
 }
