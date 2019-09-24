@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
+use Illuminate\Database\Eloquent\ModelNotFoundException; 
 
 class BookController extends Controller
 {
@@ -38,7 +39,8 @@ class BookController extends Controller
      */
     public function show($id)
     {
-        return Book::find($id);
+        $book = Book::findOrFail($id);
+        return $book;
     }
 
     /**
