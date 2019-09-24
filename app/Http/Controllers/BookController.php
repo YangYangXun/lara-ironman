@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Book;
-use Illuminate\Database\Eloquent\ModelNotFoundException; 
+
+use App\Http\Requests\BookRequest;
 
 class BookController extends Controller
 {
@@ -24,7 +25,7 @@ class BookController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(BookRequest $request)
     {
         Book::create($request->all());
 
